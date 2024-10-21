@@ -1,0 +1,19 @@
+{
+  "name": "vehicle-monitoring-system",
+  "version": "1.0.0",
+  "description": "Vehicle monitoring system using digital twin and blockchain for real-time accident detection",
+  "main": "index.js",
+  "scripts": {
+    "build": "netlify-lambda build functions",
+    "dev": "node index.js"
+  },
+  "dependencies": {
+    "uuid": "^8.3.2",
+    "express": "^4.17.1",
+    "socket.io": "^4.2.0",
+    "web3": "^1.5.2"
+  },
+  "devDependencies": {
+    "netlify-lambda": "^2.0.15"
+  }
+}

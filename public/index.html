@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Vehicle Monitoring System</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/socket.io/4.2.0/socket.io.js"></script>
+</head>
+<body>
+    <h1>Vehicle Monitoring System</h1>
+    <div id="vehicleData"></div>
+    <script>
+        const socket = io();
+        const vehicleDataDiv = document.getElementById('vehicleData');
+
+        socket.on('vehicleUpdate', (data) => {
+            vehicleDataDiv.innerHTML = `
+                <p>Vehicle ID: ${data.id}</p>
+                <p>Speed: ${data.speed.toFixed(2)} km/h</p>
+                <p>Acceleration: ${data.acceleration.toFixed(2)} m/s^2</p>
+                <p>Location: Lat ${data.location.lat.toFixed(6)}, Lon ${data.location.lon.toFixed(6)}</p>
+                <p>Engine Temperature: ${data.engineTemperature.toFixed(2)}°C</p>
+                <p>Fuel Level: ${data.fuelLevel.toFixed(2)}%</p>
+                <p>Last Updated: ${new Date(data.lastUpdated).toLocaleString()}</p>
+            `;
+        });
+    </script>
+</body>
+</html>
